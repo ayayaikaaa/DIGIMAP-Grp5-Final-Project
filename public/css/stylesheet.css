@@ -49,24 +49,24 @@ body {
 
 @font-face {
     font-family: 'Relica Rounded Retro';
-    src: url('RelicaRounded-Retro.eot');
-    src: url('RelicaRounded-Retro.eot?#iefix') format('embedded-opentype'),
-        url('RelicaRounded-Retro.woff2') format('woff2'),
-        url('RelicaRounded-Retro.woff') format('woff'),
-        url('RelicaRounded-Retro.ttf') format('truetype'),
-        url('RelicaRounded-Retro.svg#RelicaRounded-Retro') format('svg');
+    src: url('/fonts/RelicaRounded-Retro.eot');
+    src: url('/fonts/RelicaRounded-Retro.eot?#iefix') format('embedded-opentype'),
+        url('/fonts/RelicaRounded-Retro.woff2') format('woff2'),
+        url('/fonts/RelicaRounded-Retro.woff') format('woff'),
+        url('/fonts/RelicaRounded-Retro.ttf') format('truetype'),
+        url('/fonts/RelicaRounded-Retro.svg#RelicaRounded-Retro') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Relica Rounded Outline';
-    src: url('RelicaRounded-Outline.eot');
-    src: url('RelicaRounded-Outline.eot?#iefix') format('embedded-opentype'),
-        url('RelicaRounded-Outline.woff2') format('woff2'),
-        url('RelicaRounded-Outline.woff') format('woff'),
-        url('RelicaRounded-Outline.ttf') format('truetype'),
-        url('RelicaRounded-Outline.svg#RelicaRounded-Outline') format('svg');
+    src: url('/fonts/RelicaRounded-Outline.eot');
+    src: url('/fonts/RelicaRounded-Outline.eot?#iefix') format('embedded-opentype'),
+        url('/fonts/RelicaRounded-Outline.woff2') format('woff2'),
+        url('/fonts/RelicaRounded-Outline.woff') format('woff'),
+        url('/fonts/RelicaRounded-Outline.ttf') format('truetype'),
+        url('/fonts/RelicaRounded-Outline.svg#RelicaRounded-Outline') format('svg');
     font-weight: normal;
     font-style: normal;
 }
