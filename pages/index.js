@@ -1,8 +1,18 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Main.module.css'
+import Script from 'next/script'
+import React from 'react';
+import Dropzone from 'dropzone';
 
 export default function Home() {
+  function initDropzone() {
+    let imgDropzone = new Dropzone("#img-dropzone");
+    imgDropzone.on("addedfile", file => {
+      console.log('File added: ${file.name}');
+    });
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -16,45 +26,16 @@ export default function Home() {
           Real-ESRGAN
         </h1>
 
-        
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-        <h1 className="text-3xl font-bold underline">
-          Hello world!
-        </h1>
+        <form action="/file-upload" class="dropzone" id="img-dropzone"></form>
+            <script>initDropzone();</script>
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
+          <a className={styles.card}>
+            
           </a>
         </div>
+
+        <div id="display-image"></div>
       </main>
 
       <footer className={styles.footer}>
