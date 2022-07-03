@@ -4,6 +4,7 @@ const express = require('express');
 const hbs = require('hbs');
 const routes = require('./routes/routes.js');
 const app = express();
+const dropzone = require('dropzone');
 
 app.set('view engine', 'hbs');
 
@@ -19,14 +20,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 app.use('/', routes);
-
-app.use(function (req, res) {
-	var details = {
-		title: '404',
-		subtitle: 'An error has occured.'
-	}
-    res.render('error', details);
-});
 
 app.listen(port, hostname, function(){
 	console.log('Server running at:');

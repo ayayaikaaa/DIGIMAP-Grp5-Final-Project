@@ -33,8 +33,6 @@ body {
 	z-index: -1;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Lexend&family=Montserrat:wght@600&family=Nunito:ital,wght@1,200&family=Zilla+Slab+Highlight:wght@400;700&display=swap');
-
 @font-face {
     font-family: 'Relica Rounded';
     src: url('/fonts/RelicaRounded-Regular.eot');

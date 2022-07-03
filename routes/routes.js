@@ -4,6 +4,5 @@ const app = express();
 
 app.get('/favicon.ico', controller.getFavicon);
 app.get('/', controller.getIndex);
-app.get('/error', controller.getError);
 
 module.exports = app;
