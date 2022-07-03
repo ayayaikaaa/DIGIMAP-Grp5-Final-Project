@@ -5,12 +5,12 @@
 		<meta name="description" content="Real-ESRGAN">
 		<meta name="keyword" content="RESRGAN_Index">
 		<meta name="author" content="Gregorio, Manuel, Palmares, Tang">
-		<link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" type="text/css" media="all" href="/css/stylesheet.css">
-		
 		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-		<script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
+		<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+		<link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 	</head>
+
 	<body>
 		<div>
 			<p id="title-base-green" class="title">Real-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
@@ -18,7 +18,17 @@
 			<p id="title-outline" class="title">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspESRGAN</p>
 		</div>
 
-		<form action="/file-upload" class="dropzone" id="img-upload"></form>
-		<script type="module" src="/script.js"></script>
+		<form action="/target" class="dropzone" id="img-upload"></form>
+		<script>
+			Dropzone.options.imgUpload = {
+				paramName: "file",
+				maxFilesize: 2,
+				maxFiles: 1,
+				acceptedFiles: "image/*",
+			};
+		</script>
+
+		<div id="img-input"></div>
+		<div id="img-output"></div>
 	</body>
 </html>
