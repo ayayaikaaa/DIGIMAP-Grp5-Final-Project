@@ -12,23 +12,49 @@
 	</head>
 
 	<body>
-		<div>
-			<p id="title-base-green" class="title">Real-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
-			<p id="title-base-white" class="title">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspESRGAN</p>
-			<p id="title-outline" class="title">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspESRGAN</p>
+		<div id="div-body">
+
+			<div id="div-title">
+				<div id="div-title-head">
+					<p id="title-base-green" class="title-head">Real-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
+					<p id="title-base-white" class="title-head">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspESRGAN</p>
+					<p id="title-outline" class="title-head">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspESRGAN</p>
+				</div>
+				<div id="div-title-subhead">
+					<p id="title-subhead" class="title-subhead">Low to High Definition Images</p>
+				</div>
+			</div>
+
+			<br><br><br>
+
+			<div id="div-upload">
+				<form action="/target" class="dropzone" id="image-form"></form>
+				<script>
+					Dropzone.options.imgUpload = {
+						paramName: "file",
+						maxFilesize: 2,
+						maxFiles: 1,
+						acceptedFiles: "image/*",
+					};
+				</script>
+				<button id="button-convert">CONVERT</button>
+			</div>
+
+			<div id="div-images">
+				<div id="div-display-left" class="div-display">
+					<div id="div-image-input" class="display-image">
+						<center><img src="/icon-image.png" class="icon-image"></center>
+					</div>
+					<p class="image-label">INPUT</p>
+				</div>
+				<div id="div-display-right" class="div-display">
+					<div id="div-image-output" class="display-image">
+						<img src="/icon-image.png" class="icon-image">
+					</div>
+					<p class="image-label">OUTPUT</p>
+				</div>
+			</div>
+		
 		</div>
-
-		<form action="/target" class="dropzone" id="img-upload"></form>
-		<script>
-			Dropzone.options.imgUpload = {
-				paramName: "file",
-				maxFilesize: 2,
-				maxFiles: 1,
-				acceptedFiles: "image/*",
-			};
-		</script>
-
-		<div id="img-input"></div>
-		<div id="img-output"></div>
 	</body>
 </html>
