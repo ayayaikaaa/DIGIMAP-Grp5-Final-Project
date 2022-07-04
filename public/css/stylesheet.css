@@ -103,7 +103,7 @@ body {
     justify-content: center;
 }
 
-#display-left {
+#display-left, #display-right {
 	max-width: 100%;
 	max-height: 100%;
 }

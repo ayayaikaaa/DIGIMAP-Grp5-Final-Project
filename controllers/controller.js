@@ -1,29 +1,26 @@
 const {spawn} = require('child_process');
 const fs = require('fs');
 const scriptPath = './public/js/script.py';
+
 const controller = {
     getFavicon: function (req, res) {
         res.status(204);
     },
 
     getIndex: function (req, res) {
-        res.render('index');
+        res.render('index', {});
     },
 
     postQueue: function (req, res) {
-        //console.log(req);
         res.redirect('/');
     },
 
-    postUpload: function (req, res) {
-        //console.log(req);
-
-        let url = /*URL.createObjectURL(file)*/ '';
-        var imgOutput = {
-            imgURL: url
-        }
-
-        res.send("Hello");
+    postUpload: function (req, res, next) {
+        res.redirect('/');
+        
+        //let [err, data] = await uploadImg()
+        //console.log(req.file);
+       // res.send(req.file);
         /* var dataToSend;
         const python = spawn('python', [scriptPath]);
 
