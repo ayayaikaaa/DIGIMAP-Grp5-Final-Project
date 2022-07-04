@@ -4,5 +4,7 @@ const app = express();
 
 app.get('/favicon.ico', controller.getFavicon);
 app.get('/', controller.getIndex);
+app.post('/queue', controller.postQueue);
+app.post('/upload', controller.postUpload);
 
 module.exports = app;

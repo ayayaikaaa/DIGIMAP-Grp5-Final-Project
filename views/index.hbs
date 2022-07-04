@@ -9,6 +9,7 @@
 		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 		<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
 		<link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+		<script src="/js/script.js"></script>
 	</head>
 
 	<body>
@@ -19,36 +20,75 @@
 					<p id="title-base-green" class="title-head">Real-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
 					<p id="title-base-white" class="title-head">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspESRGAN</p>
 					<p id="title-outline" class="title-head">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspESRGAN</p>
-				</div>
-				<div id="div-title-subhead">
-					<p id="title-subhead" class="title-subhead">Low to High Definition Images</p>
+					<!-- <div id="div-title-subhead">
+						<p id="title-subhead" class="title-subhead">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLow to High Definition Images</p>
+					</div> -->
 				</div>
 			</div>
 
 			<br><br><br>
 
 			<div id="div-upload">
-				<form action="/target" class="dropzone" id="image-form"></form>
+				<form action="/queue" class="dropzone" id="image-form"></form>
 				<script>
-					Dropzone.options.imgUpload = {
+					var currFile = null;
+
+					Dropzone.options.imageForm = {
+						url: '/upload',
+						autoProcessQueue: false,
 						paramName: "file",
 						maxFilesize: 2,
 						maxFiles: 1,
 						acceptedFiles: "image/*",
+						init: function() {
+							this.on("addedfile", function(file) {
+								let oldFile;
+
+								if(currFile) {
+									this.removeFile(currFile);
+								}
+
+								let url = URL.createObjectURL(file);
+								currFile = file;
+								$("#display-icon-left").attr('src', '');
+								$("#display-left").attr('src', url);
+								$("#button-convert").prop("disabled", false);
+								console.log("File added to queue.");
+							});
+
+							this.on("complete", function(file) {
+								this.removeAllFiles(true);
+								$("#button-convert").prop("disabled", true);
+							});
+
+							this.on("success", function(file, res) {
+              					var response = jQuery.parseJSON(res);
+								console.log(response);
+							});
+
+							$("#button-convert").on("click", function(e) {
+								var dz = Dropzone.forElement("#image-form");
+								e.preventDefault();
+								dz.processQueue();
+							});
+						}
 					};
 				</script>
-				<button id="button-convert">CONVERT</button>
+
+				<button id="button-convert" type="submit" disabled>CONVERT</button>
 			</div>
 
 			<div id="div-images">
 				<div id="div-display-left" class="div-display">
 					<div id="div-image-input" class="display-image">
-						<center><img src="/icon-image.png" class="icon-image"></center>
+						<img id="display-left">
+						<img src="/icon-image.png" class="icon-image" id="display-icon-left">
 					</div>
 					<p class="image-label">INPUT</p>
 				</div>
 				<div id="div-display-right" class="div-display">
 					<div id="div-image-output" class="display-image">
+						<img id="display-right" src={{imgOutput}}>
 						<img src="/icon-image.png" class="icon-image">
 					</div>
 					<p class="image-label">OUTPUT</p>
