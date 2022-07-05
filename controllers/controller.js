@@ -24,6 +24,15 @@ const controller = {
             var imgOutput = "./output/" + imgFilename.replace("." + mime.extension(req.file.mimetype), "") + "_out.png";
             res.send(imgOutput);
         });
+
+        inf.stdout.on('data', function(data) {
+            console.log("stdout: " + data)
+        });
+  
+
+        inf.stderr.on('data', function(data) {
+            console.log("stderr: " + data)
+        });
   
     }
 }
