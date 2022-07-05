@@ -172,7 +172,3 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-
-# R-ESRGAN Output and Upload Folders
-public/output/*
-public/uploads/*
