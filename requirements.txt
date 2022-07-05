@@ -1,7 +1,3 @@
-https://download.pytorch.org/whl/cpu/torch-1.12.0%2Bcpu-cp39-cp39-linux_x86_64.whl
-https://download.pytorch.org/whl/cpu/torchvision-0.13.0%2Bcpu-cp39-cp39-linux_x86_64.whl
 numpy
 Pillow
 tqdm
-opencv-python
-
