@@ -1,4 +1,3 @@
-const { spawn } = require("child_process");
 const mime = require('mime-types');
 const controller = {
     getFavicon: function (req, res) {
@@ -15,7 +14,7 @@ const controller = {
 
     postUpload: function (req, res, next) {
         console.log(req.file);
-        const inf = require('child_process').exec('python Real-ESRGAN/inference_realesrgan.py -i public/uploads/' + req.file.filename + ' -s 3.5 -o public/output/ --ext png --fp32 --tile 100')
+        const inf = require('child_process').exec('python Real-ESRGAN/inference_realesrgan.py -i public/uploads/' + req.file.filename + ' -s 3.5 -o public/output/ --ext png --tile 50')
 
         inf.stdout.pipe(process.stdout);
         
