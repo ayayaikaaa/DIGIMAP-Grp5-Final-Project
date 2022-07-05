@@ -15,7 +15,7 @@ const controller = {
 
     postUpload: function (req, res, next) {
         console.log(req.file);
-        const inf = require('child_process').exec('python ./Real-ESRGAN/inference_realesrgan.py -i ./public/uploads/' + req.file.filename + ' -s 3.5 -o ./public/output/ --ext png')
+        const inf = require('child_process').exec('python Real-ESRGAN/inference_realesrgan.py -i public/uploads/' + req.file.filename + ' -s 3.5 -o public/output/ --ext png')
 
         inf.stdout.pipe(process.stdout);
         
