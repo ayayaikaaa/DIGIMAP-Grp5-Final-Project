@@ -1,6 +1,5 @@
--f https://download.pytorch.org/whl/torch_stable.html
-torch>=1.7+cpu
-torchvision==0.9.1+cpu
+https://download.pytorch.org/whl/cpu/torch-1.12.0%2Bcpu-cp39-cp39-linux_x86_64.whl
+https://download.pytorch.org/whl/cpu/torchvision-0.13.0%2Bcpu-cp39-cp39-linux_x86_64.whl
 numpy
 Pillow
 tqdm
