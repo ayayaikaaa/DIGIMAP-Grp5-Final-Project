@@ -4,3 +4,12 @@ numpy
 Pillow
 tqdm
 opencv-python-headless
+
+
+
+
+
+
+
+
+basicsr>=1.3.3.11
