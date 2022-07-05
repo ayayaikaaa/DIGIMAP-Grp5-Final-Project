@@ -9,7 +9,6 @@
 		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 		<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
 		<link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
-		<script src="/js/script.js"></script>
 	</head>
 
 	<body>
@@ -72,11 +71,8 @@
 							});
 						},
 						success: function(file) {
-							let url = URL.createObjectURL(file);
 							$("#display-icon-right").attr('src', '');
-							$("#display-right").attr('src', url);
 							$("#button-convert").prop("disabled", true);
-							this.removeFile(file);
 						}
 					};
 				</script>
@@ -87,7 +83,7 @@
 			<div id="div-images">
 				<div id="div-display-left" class="div-display">
 					<div id="div-image-input" class="display-image">
-						<img id="display-left" src="{{imgInput}}">
+						<img id="display-left" src={{imgInput}}>
 						<img src="/icon-image.png" class="icon-image" id="display-icon-left">
 					</div>
 					<p class="image-label">INPUT</p>

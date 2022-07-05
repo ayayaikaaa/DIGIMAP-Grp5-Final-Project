@@ -1,6 +1,6 @@
-const {spawn} = require('child_process');
+const { spawn } = require("child_process");
+const mime = require('mime-types');
 const fs = require('fs');
-const scriptPath = './public/js/script.py';
 
 const controller = {
     getFavicon: function (req, res) {
@@ -16,26 +16,20 @@ const controller = {
     },
 
     postUpload: function (req, res, next) {
-        res.redirect('/');
-        
-        //let [err, data] = await uploadImg()
-        //console.log(req.file);
-       // res.send(req.file);
-        /* var dataToSend;
-        const python = spawn('python', [scriptPath]);
+        const inf = require('child_process').exec('python ./Real-ESRGAN/inference_realesrgan.py -i ./public/uploads/' + req.file.filename + ' -s 3.5 -o ./public/output/')
 
-        python.stdout.on('data', function (data) {
-            console.log("Executing py.");
-            dataToSend = data.toString();
-            //console.log(dataToSend);
+        inf.stdout.pipe(process.stdout);
+        inf.on('exit', function() {
+            var imgOutput = req.file.filename;
+
+            var imgData = {
+                imgInput: "./public/uploads" + req.file.filename,
+                imgOutput: "./public/output/" + imgOutput.replace("." + mime.extension(req.file.mimetype), "") + "_out." + mime.extension(req.file.mimetype)
+            }
+            console.log(imgData);
+            res.render('index', imgData);
         });
-
-        python.on('close', (code) => {
-            console.log('Python process terminated.');
-            console.log(dataToSend);
-        }); */
-
-
+  
     }
 }
 
