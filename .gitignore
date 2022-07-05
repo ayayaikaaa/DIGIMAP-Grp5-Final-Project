@@ -147,6 +147,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
+.env
 .venv
 env/
 venv/
@@ -171,7 +172,3 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-
-# R-ESRGAN Output and Upload Folders
-public/output/*
-public/uploads/*

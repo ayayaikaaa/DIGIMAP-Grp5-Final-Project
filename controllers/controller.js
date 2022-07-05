@@ -1,16 +1,7 @@
 const { spawn } = require("child_process");
 const mime = require('mime-types');
-const multer = require('multer');
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, './public/uploads/')
-    },
-    filename: function (req, file, cb) {
-      cb(null, file.originalname)
-    }
-  });
+const aws = require('aws-sdk');
 
-const upload = multer({ storage: storage });
 const controller = {
     getFavicon: function (req, res) {
         res.status(204);
@@ -24,7 +15,21 @@ const controller = {
         res.redirect('/');
     },
 
-    postUpload: function (req, res, next) {
+    postUpload: async function (req, res, next) {
+        const s3 = new aws.S3();
+        const s3Params = {
+            Bucket: process.env.S3_BUCKET,
+            Key: req.file.filename,
+            Body: req.file,
+            Expires: 60,
+            ContentType: fileType,
+            ACL: 'public-read'
+        };
+
+        s3.upload(s3params, function(err, data) {
+            console.log(err, data);
+        });
+
         const inf = require('child_process').exec('python ./Real-ESRGAN/inference_realesrgan.py -i ./public/uploads/' + req.file.filename + ' -s 3.5 -o ./public/output/ --ext png')
 
         inf.stdout.pipe(process.stdout);
