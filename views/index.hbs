@@ -70,8 +70,10 @@
 								dz.processQueue();
 							});
 						},
-						success: function(file) {
+						success: function(file, res) {
+							console.log(res);
 							$("#display-icon-right").attr('src', '');
+							$("#display-right").attr('src', res);
 							$("#button-convert").prop("disabled", true);
 						}
 					};
@@ -83,14 +85,14 @@
 			<div id="div-images">
 				<div id="div-display-left" class="div-display">
 					<div id="div-image-input" class="display-image">
-						<img id="display-left" src={{imgInput}}>
+						<img id="display-left" src="">
 						<img src="/icon-image.png" class="icon-image" id="display-icon-left">
 					</div>
 					<p class="image-label">INPUT</p>
 				</div>
 				<div id="div-display-right" class="div-display">
 					<div id="div-image-output" class="display-image">
-						<img id="display-right" src={{imgOutput}}>
+						<img id="display-right" src="">
 						<img src="/icon-image.png" class="icon-image" id="display-icon-right">
 					</div>
 					<p class="image-label">OUTPUT</p>

@@ -1,7 +1,16 @@
 const { spawn } = require("child_process");
 const mime = require('mime-types');
-const fs = require('fs');
+const multer = require('multer');
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, './public/uploads/')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.originalname)
+    }
+  });
 
+const upload = multer({ storage: storage });
 const controller = {
     getFavicon: function (req, res) {
         res.status(204);
@@ -16,18 +25,14 @@ const controller = {
     },
 
     postUpload: function (req, res, next) {
-        const inf = require('child_process').exec('python ./Real-ESRGAN/inference_realesrgan.py -i ./public/uploads/' + req.file.filename + ' -s 3.5 -o ./public/output/')
+        const inf = require('child_process').exec('python ./Real-ESRGAN/inference_realesrgan.py -i ./public/uploads/' + req.file.filename + ' -s 3.5 -o ./public/output/ --ext png')
 
         inf.stdout.pipe(process.stdout);
+        
         inf.on('exit', function() {
-            var imgOutput = req.file.filename;
-
-            var imgData = {
-                imgInput: "./public/uploads" + req.file.filename,
-                imgOutput: "./public/output/" + imgOutput.replace("." + mime.extension(req.file.mimetype), "") + "_out." + mime.extension(req.file.mimetype)
-            }
-            console.log(imgData);
-            res.render('index', imgData);
+            var imgFilename = (req.file.filename).replace(/.jpg/g, ".jpeg");
+            var imgOutput = "./output/" + imgFilename.replace("." + mime.extension(req.file.mimetype), "") + "_out.png";
+            res.send(imgOutput);
         });
   
     }

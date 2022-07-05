@@ -5,10 +5,9 @@ const hbs = require('hbs');
 const routes = require('./routes/routes.js');
 const app = express();
 const dropzone = require('dropzone');
+const mime = require('mime-types');
 
 app.set('view engine', 'hbs');
-
-hbs.registerPartials(__dirname + '/views/partials');
 
 dotenv.config();
 port = process.env.PORT;
