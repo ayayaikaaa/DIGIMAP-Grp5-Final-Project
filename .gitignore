@@ -38,8 +38,9 @@ results/*
 tb_logger/*
 wandb/*
 tmp/*
-realesrgan/weights/*
+Real-ESRGAN/realesrgan/weights/*
 
+Real-ESRGAN/realesrgan/version.py
 version.py
 
 # Byte-compiled / optimized / DLL files
