@@ -60,16 +60,16 @@ def main():
         netscale = 4
 
     # determine model paths
-    model_path = os.path.join('Real-ESRGAN/experiments/pretrained_models', args.model_name + '.pth')
-    if not os.path.isfile(model_path):
-        model_path = os.path.join('Real-ESRGAN/realesrgan/weights', args.model_name + '.pth')
-    if not os.path.isfile(model_path):
-        raise ValueError(f'Model {args.model_name} does not exist.')
+    # model_path = os.path.join('Real-ESRGAN/experiments/pretrained_models', args.model_name + '.pth')
+    # if not os.path.isfile(model_path):
+    #    model_path = os.path.join('Real-ESRGAN/realesrgan/weights', args.model_name + '.pth')
+    # if not os.path.isfile(model_path):
+    #    raise ValueError(f'Model {args.model_name} does not exist.')
 
     # restorer
     upsampler = RealESRGANer(
         scale=netscale,
-        model_path=model_path,
+        model_path='https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth',
         model=model,
         tile=args.tile,
         tile_pad=args.tile_pad,
