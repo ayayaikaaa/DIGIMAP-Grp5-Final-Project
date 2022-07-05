@@ -1,10 +1,6 @@
 const { spawn } = require("child_process");
 const mime = require('mime-types');
 const aws = require('aws-sdk');
-const s3 = new aws.s3({
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-});
 
 const controller = {
     getFavicon: function (req, res) {
@@ -20,13 +16,19 @@ const controller = {
     },
 
     postUpload: async function (req, res, next) {
-        const upload = await s3.upload({
+        const s3 = new aws.S3();
+        const s3Params = {
             Bucket: process.env.S3_BUCKET,
             Key: req.file.filename,
-            Body: req.file
-        }).promise();
+            Body: req.file,
+            Expires: 60,
+            ContentType: fileType,
+            ACL: 'public-read'
+        };
 
-        console.log(upload.Location);
+        s3.upload(s3params, function(err, data) {
+            console.log(err, data);
+        });
 
         const inf = require('child_process').exec('python ./Real-ESRGAN/inference_realesrgan.py -i ./public/uploads/' + req.file.filename + ' -s 3.5 -o ./public/output/ --ext png')
 
