@@ -1,4 +1,8 @@
 const mime = require('mime-types');
+const { Worker } = require('worker_threads');
+const infImg = (WorkerData) => {
+    
+}
 const controller = {
     getFavicon: function (req, res) {
         res.status(204);
