@@ -1,7 +1,7 @@
 const mime = require('mime-types');
 const { Worker } = require('worker_threads');
 const infImg = (WorkerData) => {
-    
+
 }
 const controller = {
     getFavicon: function (req, res) {
@@ -29,7 +29,8 @@ const controller = {
         });
 
         inf.stdout.on('data', function(data) {
-            console.log("stdout: " + data)
+            res.status(100);
+            // console.log("stdout: " + data)
         });
   
 
