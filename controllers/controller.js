@@ -29,8 +29,7 @@ const controller = {
         });
 
         inf.stdout.on('data', function(data) {
-            res.status(100);
-            // console.log("stdout: " + data)
+            console.log("stdout: " + data)
         });
   
 
