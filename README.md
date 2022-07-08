@@ -1,19 +1,23 @@
 # DIGIMAP-Grp5-Final-Project
-DIGIMAP Final Project - Image Upscaling using [Real-ESRGAN](https://github.com/xinntao/Real-ESRGAN). If the `main` branch doesn't work try switching to the testing `branch` instead.
+
+DIGIMAP Final Project - Image Upscaling using [Real-ESRGAN](https://github.com/xinntao/Real-ESRGAN). Image processing may take a while (5-15 minutes), especially on lower-end hardware so please be patient. Please use low image file sizes to get a faster output.
 
 ## 👥 Members
+
 - GREGORIO, Angelo
 - MANUEL, Aika
 - PALMARES, Alyssa
 - TANG, Sharlin
 
 ## 📘 Dependencies
+
 - [pytorch](https://pytorch.org/)
 - basicsr
 - facexlib
 - gfpgan
 
 ## 🛠 Running Locally
+
 1. Clone the repository
 2. After cloning, run `npm install` to install all dependencies of the web app
    - run `npm install nodemon` if you don't have it installed to run the web app locally later

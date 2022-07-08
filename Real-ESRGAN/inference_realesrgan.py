@@ -122,6 +122,7 @@ def main():
             else:
                 save_path = os.path.join(args.output, f'{imgname}_{args.suffix}.{extension}')
             cv2.imwrite(save_path, output)
+            print('DONE')
 
 
 if __name__ == '__main__':

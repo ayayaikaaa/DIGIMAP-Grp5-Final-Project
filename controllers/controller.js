@@ -3,12 +3,12 @@ const mime = require('mime-types');
 const multer = require('multer');
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, './public/uploads/')
+        cb(null, './public/uploads/')
     },
     filename: function (req, file, cb) {
-      cb(null, file.originalname)
+        cb(null, file.originalname)
     }
-  });
+});
 
 const upload = multer({ storage: storage });
 const controller = {
@@ -25,16 +25,17 @@ const controller = {
     },
 
     postUpload: function (req, res, next) {
-        const inf = require('child_process').exec('python ./Real-ESRGAN/inference_realesrgan.py -i ./public/uploads/' + req.file.filename + ' -s 3.5 -o ./public/output/ --ext png')
+        console.log("FILE",req.file);
+        const inf = require('child_process').exec('python ./Real-ESRGAN/inference_realesrgan.py -i ./public/uploads/' + req.file.filename + ' -s 3.5 -o ./public/output/ --ext png --fp32')
+        console.log("PROCESSING");
 
         inf.stdout.pipe(process.stdout);
-        
-        inf.on('exit', function() {
+
+        inf.on('exit', function () {
             var imgFilename = (req.file.filename).replace(/.jpg/g, ".jpeg");
             var imgOutput = "./output/" + imgFilename.replace("." + mime.extension(req.file.mimetype), "") + "_out.png";
             res.send(imgOutput);
         });
-  
     }
 }
 
